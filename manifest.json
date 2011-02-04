@@ -1,0 +1,18 @@
+{
+   "name": "Related Entries",
+   "description": "Show Related Entries",
+   "browser_action": {
+      "default_icon": "icon128.png",
+      "popup": "popup.html"
+   },
+   "icons": {
+      "128": "icon128.png"
+   },
+   "version": "0.1",
+   "update_url": "http://clients2.google.com/service/update2/crx",
+
+  "permissions": [
+    "tabs",
+    "http://b.hatena.ne.jp/"
+  ]
+}
