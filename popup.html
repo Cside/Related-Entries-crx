@@ -1,119 +1,14 @@
 <html lang="ja">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="./jquery.min.js"></script>
+    <script src="./popup.js"></script>
+    <link rel="stylesheet" type="text/css" href="./popup.css">
   </head>
   <body>
-
     <h2>
       <span>関連エントリー</span>
     </h2>
     <ul class="userlist refered bookmark-list" style="width: auto;"></ul>
   </body>
-
 </html>
-<script src="./jquery.min.js"></script>
-<script>
-chrome.tabs.getSelected(null, function(selectedTab){
-    var currentUrl = selectedTab.url;
-    //var currentUrl = "http://www.hatena.ne.jp/";
-    $.get("http://b.hatena.ne.jp/entry/json/" + currentUrl, function(html, status) {
-        var innerHTML = [];
-        if (html) {
-            if (html.related) {
-                $.each(html.related, function (){
-                    var url        = this.url;
-                    var count      = this.count;
-                    var entryUrl   = this.entry_url;
-                    var title      = truncate(this.title, 40);
-                    var entryHtml  = 
-                        '<li><a target="_blank "href="' + url + '" class="favicon entry-link"><img src="http://favicon.st-hatena.com/?url=' + encodeURIComponent(url) + '" alt=""></a><a target="_blank "href="' + url + '" class="entry-link" title="' + title + '">' + title + '</a><span class="users"><a target="_blank "href="' + entryUrl + '" title="はてなブックマーク - ' + title + '">' + count + ' users</a></span></li>';
-
-                    innerHTML.push(entryHtml);
-                });
-                $('ul.refered').html(innerHTML.join(''));
-                return;
-            }
-        }
-        $('ul.refered').html('関連エントリーはありませんでした。');
-    });
-});
-
-function truncate(str, size, suffix) {
-    if (!str) str = '';
-    if (!size) size = 32;
-    if (!suffix) suffix = '...';
-    var b = 0;
-    for (var i = 0;  i < str.length; i++) {
-        b += str.charCodeAt(i) <= 255 ? 1 : 2;
-        if (b > size) {
-            return str.substr(0, i) + suffix;
-        }
-    }
-    return str;
-}
-function a(s){alert(s);}
-function c(s){console.log(s);}
-</script>
-<style type="text/css">
-body {
-    min-width: 450px;
-}
-body, h2, ul, li {
-    margin: 0;
-    list-style: none;
-    font: 100%/1.4 "Arial", "Helvetica", sans-serif;
-}
-h2 {
-    background: #86B111 url(http://b.st-hatena.com/images/entry_bg.gif?eva) right -300px no-repeat;
-    margin: 0;
-    position: relative;
-}
-
-h2 span {
-    display: block;
-    background: transparent url(http://b.st-hatena.com/images/entry_bg.gif?eva) left -300px no-repeat;
-    margin-right: 5px;
-    padding: 5px 10px;
-    font-weight: bold;
-    color: white;
-}
-ul {
-    display: block;
-    list-style-type: disc;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    -webkit-padding-start: 40px;
-}
-ul.userlist {
-    line-height: 1;
-    padding-left: 10px;
-}
-ul.userlist li {
-    line-height: 1.4;
-    font-size: 80%;
-    display: list-item;
-}
-.bookmark-list li {
-    padding: 4px 20px 4px 5px;
-}
-a {
-    color: #00D;
-    margin-right: 2px;
-    cursor: pointer;
-}
-a.favicon {
-    text-decoration: none;
-}
-a:-webkit-any-link {
-    color: -webkit-link;
-    text-decoration: underline;
-    cursor: auto;
-}
-span.users {
-    background: url(http://b.st-hatena.com/images/page.gif) no-repeat left center;
-    padding-left: 13px;
-    white-space: nowrap;
-}
-</style>

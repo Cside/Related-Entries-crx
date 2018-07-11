@@ -1,0 +1,61 @@
+body {
+    min-width: 450px;
+}
+body, h2, ul, li {
+    margin: 0;
+    list-style: none;
+    font: 100%/1.4 "Arial", "Helvetica", sans-serif;
+}
+h2 {
+    background: #86B111 url(http://b.st-hatena.com/images/entry_bg.gif?eva) right -300px no-repeat;
+    margin: 0;
+    position: relative;
+}
+
+h2 span {
+    display: block;
+    background: transparent url(http://b.st-hatena.com/images/entry_bg.gif?eva) left -300px no-repeat;
+    margin-right: 5px;
+    padding: 5px 10px;
+    font-weight: bold;
+    color: white;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+ul.userlist {
+    line-height: 1;
+    padding-left: 10px;
+}
+ul.userlist li {
+    line-height: 1.4;
+    font-size: 80%;
+    display: list-item;
+}
+.bookmark-list li {
+    padding: 4px 20px 4px 5px;
+}
+a {
+    color: #00D;
+    margin-right: 2px;
+    cursor: pointer;
+}
+a.favicon {
+    text-decoration: none;
+}
+a:-webkit-any-link {
+    color: -webkit-link;
+    text-decoration: underline;
+    cursor: auto;
+}
+span.users {
+    background: url(http://b.st-hatena.com/images/page.gif) no-repeat left center;
+    padding-left: 13px;
+    white-space: nowrap;
+}
